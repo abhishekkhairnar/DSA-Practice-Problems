@@ -1,0 +1,48 @@
+import java.util.*;
+public class MergeSortInPlace{
+    public static void main(String[]args){
+        int[]arr = {3,5,9,2,7,8,2,4,1};
+        mergeSortInPlace(arr,0,arr.length);
+        System.out.println(Arrays.toString(arr));
+    }
+    public static void mergeSortInPlace(int[]arr,int s,int e){
+        if(arr.length == 1){
+            return;
+        }
+        int mid = (s+e) / 2;
+        mergeSortInPlace(arr,s,mid);
+        mergeSortInPlace(arr,mid,e); 
+        mergeInPlace(arr,s,mid,e);
+    }
+    public static void mergeInPlace(int[]arr,int s,int m,int e){
+        int[] mix = new int[e-s];
+        int i=s;
+        int j=m;
+        int k=0;
+        while(i<m && j<e){
+            if(arr[i] < arr[j]){
+                mix[k] = arr[i];
+                i++;
+            }
+            else{
+                mix[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+        // what if still elements of any of array are remaining to insert into mix array
+        while(i<m){
+            mix[k] = arr[i];
+            i++;
+            k++;
+        }
+        while(j<e){
+            mix[k] = arr[j];
+            j++;
+            k++;
+        }
+        for(int l=0;l<mix.length;l++){
+            arr[s+l] = mix[l];
+        }
+    }
+}
