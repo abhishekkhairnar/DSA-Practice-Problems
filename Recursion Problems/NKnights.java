@@ -1,29 +1,33 @@
 public class NKnights{
     public static void main(String[]args){
-        int n = 4;
+        int n = 3;
         boolean[][]board = new boolean[n][n];
-        knights(board,0,0,4);
+        knights(board,0,0,3);
     }
-    public static void knights(boolean[][]board,int row,int col,int knights){
-        if(knights == 0){
+
+    public static void knights(boolean[][]board,int row,int col,int k){
+        if(k == 0){
             display(board);
-            return;
+            System.out.println();
         }
         if(row == board.length-1 && col == board.length){
             return;
         }
         // it have reached column end then check from next row
-
         if(col == board.length){
-            knights(board,row+1,col,knights-1);
+            knights(board,row+1,0,k);
+            return;
         }
+
         if(isSafe(board,row,col)){
             board[row][col] = true;
-            knights(board,row,col+1,knights-1);
+            knights(board,row,col+1,k-1);
             board[row][col] = false;
         }
-        knights(board,row,col+1,knights);
+        knights(board,row,col+1,k);
     }
+
+
     static boolean isSafe(boolean[][]board,int row,int col){
         if(isValid(board,row-2,col-1)){
             if(board[row-2][col-1]){
@@ -57,7 +61,7 @@ public class NKnights{
         for(boolean[] row : board){
             for(boolean element: row){
                 if(element){
-                    System.out.print("Q ");
+                    System.out.print("K ");
                 }
                 else{
                     System.out.print("X ");

@@ -3,8 +3,11 @@ public class NQueens{
     public static void main(String[]args){
         int n = 5;
         boolean[][] board = new boolean[n][n];
-        System.out.println(queensRet(board,0));
+        // ArrayList<ArrayList<Integer>> ans = queensRet(board,0);
+        // bubbleSort(ans);
+        System.out.println(queensRetString(board,0));
     }
+
     static int queens(boolean[][] board,int row){
         if(row == board.length){
             display(board);
@@ -88,4 +91,40 @@ public class NQueens{
         
         return aList;
     } 
+
+
+
+    static List<List<String>> queensRetString(boolean[][]board,int row){
+        if(row == board.length){
+            List<String> ans = new ArrayList<>();
+            String temp = "";
+            for(int i=0;i<board.length;i++){
+                for(int j=0;j<board.length;j++){
+                    if(board[j][i]){
+                        temp = temp+"Q";
+                    }
+                    else{
+                        temp +=".";
+                    }
+                }
+                ans.add(temp);
+                temp = "";
+            }
+            List<List<String> > List = new ArrayList<List<String> >();
+            List.add(ans);
+            return List;
+        }
+        
+        List<List<String> > aList = new ArrayList<List<String> >();
+        
+        for(int col=0;col<board.length;col++){
+            if(isSafe(board,row,col)){
+                board[row][col] = true;
+                aList.addAll(queensRetString(board,row+1));
+                board[row][col] = false;//backtrack
+            }
+        }
+        
+        return aList;
+    }
 }
