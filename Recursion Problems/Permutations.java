@@ -3,7 +3,8 @@ public class Premutations{
     public static void main(String[]args){
         // ArrayList<String> ans = permutations2("","abc");
         // System.out.println(ans);
-        System.out.print(permutations3("","abcd"));
+        System.out.println();
+        permutations("","abcd");
     }
     static void permutations(String p,String up){
         if(up.isEmpty()){

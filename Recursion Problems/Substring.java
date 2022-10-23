@@ -1,7 +1,7 @@
 import java.util.*;
 public class Substring{
     public static void main(String[]args){
-        ascii("","abc");
+        subseq("","abc");
     }
     static void subseq(String p,String up){
         if(up.isEmpty()){
