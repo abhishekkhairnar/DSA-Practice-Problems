@@ -7,8 +7,34 @@ public class CountSort
         int[]arr={1,4,4,1,0,1};
         int k=5;
         int n=arr.length;
-        naiveCountSort(arr,n,k);
+        countSort(arr,n,k);
         System.out.println(Arrays.toString(arr));
+    }
+    public static void countSort(int[]arr,int n,int k)
+    {
+        int count[] = new int [n];
+        for(int i=0;i<n;i++)
+        {
+            count[i]=0;
+        }
+        for(int i=0;i<n;i++)
+        {
+            count[arr[i]]++;
+        }
+        for(int i=1;i<k;i++)
+        {
+            count[i] += count[i-1];
+        }
+        int [] output = new int [n];
+        for(int i=0;i<n;i++)
+        {
+            output[count[arr[i]]-1]= arr[i];
+            count[arr[i]]--;
+        }
+        for(int i=0;i<n;i++)
+        {
+            arr[i] = output[i];
+        }
     }
     public static void naiveCountSort(int[]arr,int n,int k)
     {
