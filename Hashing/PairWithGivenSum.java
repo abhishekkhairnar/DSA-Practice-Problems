@@ -14,7 +14,9 @@ public class PairWithGivenSum
         for(int i=0;i<n;i++)
         {
             if(set.contains( sum - a[i] ))
+            {
                 return true;
+            }
             set.add(a[i]);
         }
         return false;
