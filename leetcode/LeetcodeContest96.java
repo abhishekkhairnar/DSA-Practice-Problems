@@ -1,5 +1,6 @@
 public class LeetcodeContest96
 {
+    // practicing leetcode problems
     public static void main(String[]args)
     {
         int[]arr1 = {1,2,3};
@@ -25,6 +26,6 @@ public class LeetcodeContest96
                 p2++;
             }
         }
-        return -1;
+        return -1; 
     }
 }
