@@ -11,7 +11,7 @@ public class FindKthPositive {
         int pt2=0;
         int []temp = new int[1000];
         int value=1;
-        while(g)
+        while(pt2 < 1000)
         {
             if(pt1 <arr.length && arr[pt1]==value)
             {
