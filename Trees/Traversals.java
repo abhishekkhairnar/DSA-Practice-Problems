@@ -31,7 +31,7 @@ public class Traversals {
         // postOrder(root);
         // System.out.println(getMax(root));
         // System.out.println(getHeight(root));
-        IterativeInorder(root);
+        IterativePreorder(root);
     }
 
     // Recursive Approach
@@ -104,5 +104,26 @@ public class Traversals {
             System.out.print(curr.data+" ");
             curr = curr.right;
         } 
+    } 
+    public static void IterativePreorder(Node root)
+    {
+        if(root == null)
+        {
+            return;
+        }
+        Stack<Node> s = new Stack<>();
+        s.push(root);
+        while(s.isEmpty() == false){
+            Node curr = s.pop();
+            System.out.println(curr.data+" ");
+            if(curr.right != null)
+            {
+                s.push(curr.right);
+            }
+            if(curr.left != null)
+            {
+                s.push(curr.left);
+            }
+        }
     }
 }
