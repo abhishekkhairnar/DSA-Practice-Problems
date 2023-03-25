@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Traversals {
@@ -31,7 +33,7 @@ public class Traversals {
         // postOrder(root);
         // System.out.println(getMax(root));
         // System.out.println(getHeight(root));
-        IterativePreorder(root);
+        levelOrder2(root);
     }
 
     // Recursive Approach
@@ -124,6 +126,46 @@ public class Traversals {
             {
                 s.push(curr.left);
             }
+        }
+    }
+    // level order traversal or tree
+    public static void levelOrder(Node root)
+    {
+        if(root == null){
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(q.size() > 1){
+            Node curr = q.poll();
+            if(curr == null)
+            {
+                System.out.println();
+                q.add(null);
+                continue;
+            }
+            System.out.println(curr.data+" ");
+            if(curr.left != null){q.add(curr.left);}
+            if(curr.right != null){q.add(curr.right);}
+        }
+    }
+    // print level order using another approach
+    public static void levelOrder2(Node root)
+    {
+        if(root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while(q.isEmpty() == false){
+            int count = q.size();
+            for(int i=0;i<count;i++)
+            {
+                Node curr = q.poll();
+                System.out.println(curr.data+" ");
+                if(curr.left != null) q.add(curr.left);
+                if(curr.right != null) q.add(curr.right);
+            }
+            System.out.println();
         }
     }
 }
