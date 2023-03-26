@@ -89,7 +89,6 @@ public class Traversals {
             return Math.max(getHeight(root.left),getHeight(root.right)) + 1 ;
         }
     }
-
     // Iterative Approach
     public static void IterativeInorder(Node root)
     {
@@ -168,4 +167,5 @@ public class Traversals {
             System.out.println();
         }
     }
+    
 }
