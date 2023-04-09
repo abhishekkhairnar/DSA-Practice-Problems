@@ -34,6 +34,7 @@ public class Traversals {
         // System.out.println(getMax(root));
         // System.out.println(getHeight(root));
         levelOrder2(root);
+        spiral(root);
     }
 
     // Recursive Approach
@@ -164,6 +165,37 @@ public class Traversals {
                 if(curr.left != null) q.add(curr.left);
                 if(curr.right != null) q.add(curr.right);
             }
+            System.out.println();
+        }
+    }
+
+
+    // spiral traversal
+    public static void spiral(Node root)
+    {
+        if(root == null) return;
+        Queue<Node> q = new LinkedList<>();
+        Stack<Node> s = new Stack<>();
+        boolean reverse = false;
+        while(q.isEmpty() == false)
+        {
+            int count = q.size();
+            for(int i=0;i<count;i++)
+            {
+                Node curr = q.poll();
+                if(reverse) s.push(curr);
+                else System.out.print(curr.data);
+                if(curr.left != null) q.add(curr.left);
+                if(curr.right != null) q.add(curr.right);
+            }
+            if(reverse)
+            {
+                while(q.isEmpty() == false)
+                {
+                    System.out.print(s.pop()+" ");
+                }
+            }
+            reverse = !reverse;
             System.out.println();
         }
     }
