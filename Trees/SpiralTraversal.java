@@ -22,35 +22,35 @@ public class SpiralTraversal {
         root.left.right = new Node(5);
         root.right.right = new Node(6);
         root.right.left = new Node(7);
-        spiral(root);
+        printSpiral(root);
     }
-    public static void spiral(Node root)
-    {
-        if(root == null) return;
-        Queue<Node> q = new LinkedList<>();
-        Stack<Node> s = new Stack<>();
+    public static void printSpiral(Node root){
+        Stack<Node> st = new Stack<>();
+        Queue<Node> qu = new LinkedList<>();
         boolean reverse = false;
-        while(q.isEmpty() == false)
-        {
-            int count = q.size();
-            for(int i=0;i<count;i++)
-            {
-                Node curr = q.poll();
-                if(reverse) s.push(curr);
-                else System.out.print(curr.data);
-                if(curr.left != null) q.add(curr.left);
-                if(curr.right != null) q.add(curr.right);
-            }
-            if(reverse)
-            {
-                while(q.isEmpty() == false)
-                {
-                    System.out.print(s.pop()+" ");
+        qu.add(root);
+        while(qu.isEmpty() == false){
+            int count = qu.size();
+            for(int i=0;i<count;i++){
+                Node curr = qu.poll();
+                if(reverse){
+                    st.push(curr);
                 }
+                else{
+                    System.out.print(curr.data+" ");
+                }
+                if(curr.left != null)  qu.add(curr.left);
+                if(curr.right != null)  qu.add(curr.right);
             }
+            if(reverse){
+                while(st.isEmpty() == false){
+                    System.out.print(st.pop().data+" ");
+                }
+            }   
             reverse = !reverse;
             System.out.println();
         }
     }
+    
 
 }
