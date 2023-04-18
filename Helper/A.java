@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // import InterruptedException;
 class A implements Runnable{
     public void run()
@@ -15,8 +17,11 @@ class A implements Runnable{
     }
     public static void main(String[]args)
     {
-        Runnable r = new A();
-        Thread t=new Thread(r);
-        t.start();
+        // Runnable r = new A();
+        // Thread t=new Thread(r);
+        // t.start();
+        int num = 1234;
+        String str = Integer.toString(num);
+        System.out.println(str);
     }    
 }

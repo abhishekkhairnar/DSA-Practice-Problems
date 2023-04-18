@@ -169,6 +169,7 @@ public class Traversals {
         }
     }
 
+    
 
     // spiral traversal
     public static void spiral(Node root)
