@@ -1,0 +1,25 @@
+Binary heap is a complete binary tree stored in an array
+
+here by using binary heap we can get advantages of array such that
+    random access
+    travercing bottom up
+
+we can reach left child of any node by
+
+    left(i) = 2*i + 1
+
+we can reach right child of any node by 
+    
+    right(i) = 2*i + 2
+
+we can reach parent of any node by  
+
+    parent(i) = floor( i-1 / 2)
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+Min-heap
+|- Complete Binary tree
+|- Every Node has value smaller than its decendents
