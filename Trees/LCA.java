@@ -86,4 +86,45 @@ public class LCA {
             return right;
         }
     }
+
+
+
+
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<Integer> leafs = new ArrayList<>();
+        List<String> ans = new ArrayList<>();
+        findLeafs(root,leafs);
+        for(int ele : leafs){
+            StringBuilder b = new StringBuilder();
+            List<String> ls = new ArrayList<>();
+            buildPath(ele,root,ls);
+            for(String str : ls){
+                b.append(str);
+                b.append("->");
+            }
+            b.deleteCharAt(b.length()-1);
+            b.deleteCharAt(b.length()-1);
+            ans.add(b.toString());
+            b.setLength(0);
+        }
+        return ans;
+    }
+    public void findLeafs(TreeNode root,List<Integer> leafs){
+        if(root == null) return;
+        if(root.left == null && root.right == null){
+            leafs.add(root.val);
+        }
+        findLeafs(root.left,leafs);
+        findLeafs(root.right,leafs);
+    }
+    public boolean buildPath(int x,TreeNode root, List<String> ls){
+        if(root == null) return false;
+        ls.add(Integer.toString(root.val));
+        if(root.val == x) return true;
+        if(buildPath(x,root.left,ls) || buildPath(x,root.right,ls)){
+            return true;
+        }
+        ls.remove(ls.size()-1);
+        return false;
+    }
 }
