@@ -35,4 +35,19 @@ public class Heap {
         arr[i] = arr[j];
         arr[j] = temp; 
     }
+    public void minHeapify(int i){
+        int lt = left(i);
+        int rt = right(i);
+        int smallest = i;
+        if(lt < size && arr[lt] > arr[i]){
+            smallest = lt;
+        }
+        if(rt < size && arr[rt] > arr[i]){
+            smallest = rt;
+        }
+        if(smallest != i){
+            swap(arr,i,smallest);
+            minHeapify(smallest);
+        }
+    }
 }

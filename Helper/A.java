@@ -20,8 +20,13 @@ class A implements Runnable{
         // Runnable r = new A();
         // Thread t=new Thread(r);
         // t.start();
-        int num = 1234;
-        String str = Integer.toString(num);
-        System.out.println(str);
+        // int num = 1234;
+        // String str = Integer.toString(num);
+        // System.out.println(str);
+        String s = "   this is a wild     ";
+        System.out.println(s);
+        s.trim();
+        System.out.println(s);
+        
     }    
 }
