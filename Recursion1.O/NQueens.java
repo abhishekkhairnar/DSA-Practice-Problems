@@ -1,11 +1,12 @@
 import java.util.*;
 public class NQueens{
     public static void main(String[]args){
-        int n = 5;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size of board : " );
+        int n = sc.nextInt();
         boolean[][] board = new boolean[n][n];
-        // ArrayList<ArrayList<Integer>> ans = queensRet(board,0);
-        // bubbleSort(ans);
-        System.out.println(queensRetString(board,0));
+        int ans = queens(board,0);
+        System.out.println("Number of Ways are : "+ans);
     }
 
     static int queens(boolean[][] board,int row){
