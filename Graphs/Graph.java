@@ -36,6 +36,7 @@ public class Graph {
         ls4.add(2);
         ls4.add(3);
         g.list.add(4, ls4);
+        g.bfs(4, 0);
     }
     // there is some issue with linked list
     public void bfs(int v,int s){
@@ -50,6 +51,17 @@ public class Graph {
                 if(visited[v2]==false){
                     list.get(cur).add(v2);
                 }
+            }
+        }
+    }
+
+    // depth first search
+    public void dfs(ArrayList<ArrayList<Integer>> ls,int s,boolean visited[]){
+        visited[s] = true;
+        System.out.print(s+" ");
+        for(int u : ls.get(s)){
+            if(visited[u] == false){
+                dfs(ls,u,visited);
             }
         }
     }
