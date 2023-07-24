@@ -39,6 +39,36 @@ public class Graphs {
         recStack[i] = false;
         return false;
     }
+
+    // check if undirected graph contains cycle or not
+    public boolean isCyclic2(){
+        boolean visited[] = new boolean[v];
+        for (int i = 0; i < v; i++) {
+            if(!visited[i]){
+                if(isCyclicUtil2(i,visited,-1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    private boolean isCyclicUtil2(int v, boolean[] visited, int parent) {
+        visited[v] = true;
+        Integer i;
+        Iterator<Integer> it = adj.get(v).iterator();
+        while (it.hasNext()) {
+            i = it.next();
+            if(!visited[i]){
+                if(isCyclicUtil2(i,visited,v)){
+                    return true;
+                }
+            }
+            else if(i != parent){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Graphs g = new Graphs(4);
         g.addEdge(0, 1);
