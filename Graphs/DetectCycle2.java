@@ -56,7 +56,7 @@ public class DetectCycle2{
         Scanner sc = new Scanner(System.in);
         System.out.print("Choose which graph you do want to make (Adjacency Matrix : A / Adjacency List : B ) : ");
         char choice = sc.next().charAt(0);
-        if(choice == 'A'){
+        if(choice == 'A' || choice == 'a'){
             System.out.print("Enter number of vertices : ");
             int n = sc.nextInt();
             System.out.print("Enter number of edges : ");
