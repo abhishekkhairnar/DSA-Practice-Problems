@@ -23,10 +23,13 @@ class A implements Runnable{
         // int num = 1234;
         // String str = Integer.toString(num);
         // System.out.println(str);
-        String s = "   this is a wild     ";
-        System.out.println(s);
-        s.trim();
-        System.out.println(s);
+        // String s = "   this is a wild     ";
+        // System.out.println(s);
+        // s.trim();
+        // System.out.println(s);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
         
     }    
 }
