@@ -4,7 +4,7 @@ public class Premutations{
         // ArrayList<String> ans = permutations2("","abc");
         // System.out.println(ans);
         System.out.println();
-        permutations("","abcd");
+        permutations2("","abcd");
     }
     static void permutations(String p,String up){
         if(up.isEmpty()){
