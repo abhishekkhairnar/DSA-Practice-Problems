@@ -9,7 +9,8 @@ public class Sorting {
 //        insertionSort(arr, 10);
 //        mergeSort(arr, 0, arr.length - 1);
 //        recBubbleSort(arr, 9);
-        recInsertionSort(arr, 0);
+//        recInsertionSort(arr, 0);
+        quickSort(arr, 0, arr.length - 1);
 
         System.out.println(Arrays.toString(arr));
     }
@@ -132,5 +133,36 @@ public class Sorting {
             j--;
         }
         recInsertionSort(arr, n + 1);
+    }
+
+    public static void quickSort(int[]arr, int low, int high) {
+        if (low < high) {
+            int pIndex = solve(arr, low, high);
+            quickSort(arr, low, pIndex - 1);
+            quickSort(arr, pIndex + 1, high);
+        }
+
+    }
+
+    public static int solve(int [] arr, int low, int high) {
+        int pivot = arr[low];
+        int i = low;
+        int j = high;
+
+        while (i < j) {
+            while (arr[i] <= pivot && i <= high) i++;
+            while (arr[j] > pivot && j >= low) j--;
+            if (i < j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp2 = arr[low];
+        arr[low] = arr[j];
+        arr[j] = temp2;
+
+        return j;
     }
 }
