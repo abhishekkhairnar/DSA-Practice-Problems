@@ -2,11 +2,13 @@ import java.util.*;
 
 public class Sorting {
     public static void main(String[] args) {
-        int [] arr = new int [] {9, 88, 0, 1, 2, 3, 4, 5, 6, 7}; // 23, 24, 26, 41, 47, 72, 73, 94
+        int [] arr = new int [] {1, 1, 2, 3, 4, 2, 4, 5, 6}; // 23, 24, 26, 41, 47, 72, 73, 94
 
 //        selectionSort(arr);
 //        bubbleSort(arr, 10);
-        insertionSort(arr, 10);
+//        insertionSort(arr, 10);
+        mergeSort(arr, 0, arr.length - 1);
+
         System.out.println(Arrays.toString(arr));
     }
     // time complexity = O(n^2)
@@ -50,7 +52,7 @@ public class Sorting {
 
         System.out.println(count);
     }
-
+    // time complexity best case O(n) worst case O(n^2)
     public static void insertionSort(int [] arr, int n) {
         for (int i = 0; i < n; i++) {
             int j = i;
@@ -60,6 +62,47 @@ public class Sorting {
                 arr[j] -= arr[j - 1];
                 j--;
             }
+        }
+    }
+
+    public static void mergeSort(int[] arr, int low, int high) {
+        if (low >= high) return;
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid);
+        mergeSort(arr, mid + 1, high);
+        merge(arr, low, mid, high);
+    }
+
+    public static void merge(int[] arr, int low, int mid, int high) {
+        int index = low;
+
+        int left = low;
+        int right = mid + 1;
+
+        ArrayList<Integer> sortedList = new ArrayList<>();
+
+        while (left <= mid && right <= high) {
+            if (arr[left] <= arr[right]) {
+                sortedList.add(arr[left]);
+                left++;
+            } else {
+                sortedList.add(arr[right]);
+                right++;
+            }
+        }
+
+        while (left <= mid) {
+            sortedList.add(arr[left]);
+            left++;
+        }
+
+        while (right <= high) {
+            sortedList.add(arr[right]);
+            right++;
+        }
+
+        for (int i = low; i < high; i++) {
+            arr[i] = sortedList.get(i - low);
         }
     }
 }
