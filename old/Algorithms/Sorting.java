@@ -7,7 +7,9 @@ public class Sorting {
 //        selectionSort(arr);
 //        bubbleSort(arr, 10);
 //        insertionSort(arr, 10);
-        mergeSort(arr, 0, arr.length - 1);
+//        mergeSort(arr, 0, arr.length - 1);
+//        recBubbleSort(arr, 9);
+        recInsertionSort(arr, 0);
 
         System.out.println(Arrays.toString(arr));
     }
@@ -104,5 +106,31 @@ public class Sorting {
         for (int i = low; i < high; i++) {
             arr[i] = sortedList.get(i - low);
         }
+    }
+
+    // recursive bubble sort
+    public static void recBubbleSort(int [] arr, int n) {
+        if (n == 1) return;
+        for (int j = 0; j < n - 2; j++) {
+            if (arr[j] > (arr[j + 1])) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+        recBubbleSort(arr, n - 1);
+    }
+
+    // recursive insertion sort
+    public static void recInsertionSort(int [] arr, int n) {
+        if (n == arr.length) return;
+        int j = n;
+        while (j > 0 && arr[j - 1] > arr[j]) {
+            arr[j] += arr[j - 1];
+            arr[j - 1] = arr[j] - arr[j - 1];
+            arr[j] -= arr[j - 1];
+            j--;
+        }
+        recInsertionSort(arr, n + 1);
     }
 }
